@@ -1,0 +1,55 @@
+---
+output:
+  sort-results: true
+
+linters-settings:
+  cyclop:
+    max-complexity: 15
+  goheader:
+    values:
+      const:
+        ORGANIZATION: T-Systems Multimedia Solutions GmbH
+    template: |-
+      Copyright {{ YEAR-RANGE }} {{ ORGANIZATION }}
+      SPDX-License-Identifier: MIT
+  gomnd:
+    ignore-functions:
+      - 'strconv.*'
+  goimports:
+    local-prefixes: github.com/T-Systems-MMS/
+  misspell:
+    locale: US
+
+linters:
+  disable-all: false
+  enable:
+    - bodyclose
+    - containedctx
+    - contextcheck
+    - cyclop
+    - decorder
+    - errorlint
+    - exportloopref
+    - forbidigo
+    - forcetypeassert
+    - gocognit
+    - goconst
+    - gocritic
+    - gofmt
+    - goheader
+    - goimports
+    - gomnd
+    - gosec
+    - lll
+    - makezero
+    - misspell
+    - nakedret
+    - nestif
+    - nlreturn
+    - nolintlint
+    - predeclared
+    - revive
+    - rowserrcheck
+    - sqlclosecheck
+    - wrapcheck
+    - wsl

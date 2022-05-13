@@ -1,0 +1,3 @@
+*.kdbx
+*.p7mkey
+/keepassxc-p11-wrapper

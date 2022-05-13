@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=KeePassXC PKCS#11 Wrapper
+Comment=Wrapper for opening PKCS#11 smart card encrypted keepass2 databases with KeepassXC
+Exec=keepassxc-p11-wrapper %f
+Icon=keepassxc
+StartupWMClass=keepassxc
+StartupNotify=true
+Terminal=false
+Type=Application
+Version=1.0
+Categories=Utility;Security;Qt;
+MimeType=application/x-keepass2;
