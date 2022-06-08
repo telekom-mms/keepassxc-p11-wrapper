@@ -3,8 +3,6 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/gopasspw/pinentry v0.0.2 h1:6OmkoTYMU05PmAJSIZSRjjhiQX15AstdgNa2KimH5XA=
 github.com/gopasspw/pinentry v0.0.2/go.mod h1:lR1WuNI96rXXBCgM601Ima3acnX3ZSPthIAuG6lHa68=
-github.com/jandd/go-pkcs7 v0.0.0-20220513072854-5a44e685aaf0 h1:OC2hqg5gLG32RKJf23ARuRZuRvjnesjMIt4LnmdMEZQ=
-github.com/jandd/go-pkcs7 v0.0.0-20220513072854-5a44e685aaf0/go.mod h1:4VzeuBwnt+H1rnGUNHlwl+2BsrEI3G1aJNpY2elAX8w=
 github.com/miekg/pkcs11 v1.1.1 h1:Ugu9pdy6vAYku5DEpVWVFPYnzV+bxB+iRdbuFSu7TvU=
 github.com/miekg/pkcs11 v1.1.1/go.mod h1:XsNlhZGX73bx86s2hdc/FuaLm2CPZJemRLMA+WTFxgs=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
@@ -22,3 +20,7 @@ gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8
 gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
 gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b h1:h8qDotaEPuJATrMmW04NCwg7v22aHH28wwpauUhK9Oo=
 gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
+pault.ag/go/pkcs7 v0.0.0-20170119163022-efef219101cd h1:rycbOtOcu16ZdXVFEXJkckixKtrPWEfhpPVWvvgwzCE=
+pault.ag/go/pkcs7 v0.0.0-20170119163022-efef219101cd/go.mod h1:GTPngsDRmO2Y5vG3lGXyK4icxe63Xzn8/ExROrdQmXs=
+pault.ag/go/pkcs7 v0.0.0-20220605185533-916a162b6ad9 h1:kRjytSPcHSj04zNXzSlzdo3tQ6k5gJT4qyqYKAr0ZKo=
+pault.ag/go/pkcs7 v0.0.0-20220605185533-916a162b6ad9/go.mod h1:GTPngsDRmO2Y5vG3lGXyK4icxe63Xzn8/ExROrdQmXs=

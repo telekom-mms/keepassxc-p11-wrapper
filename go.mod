@@ -6,12 +6,7 @@ require (
 	github.com/gopasspw/pinentry v0.0.2
 	github.com/miekg/pkcs11 v1.1.1
 	github.com/sirupsen/logrus v1.8.1
-	pault.ag/go/pkcs7 v0.0.0-20170119163022-efef219101cd
-)
-
-replace (
-	pault.ag/go/pkcs7 => github.com/jandd/go-pkcs7 v0.0.0-20220513072854-5a44e685aaf0
-	pault.ag/go/pkcs7 v0.0.0-20170119163022-efef219101cd => github.com/jandd/go-pkcs7 v0.0.0-20220513072854-5a44e685aaf0
+	pault.ag/go/pkcs7 v0.0.0-20220605185533-916a162b6ad9
 )
 
 require (
