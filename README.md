@@ -42,5 +42,3 @@ to build the binary.
 ## License
 
 The software is released under the terms of the MIT license as written in the [LICENSE](LICENSE) file.
-
-A fork of https://github.com/paultag/go-pkcs7 is used until https://github.com/paultag/go-pkcs7/pull/1 is merged.
