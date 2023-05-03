@@ -8,7 +8,7 @@ linters-settings:
   goheader:
     values:
       const:
-        ORGANIZATION: T-Systems Multimedia Solutions GmbH
+        ORGANIZATION: Deutsche Telekom MMS GmbH
     template: |-
       Copyright {{ YEAR-RANGE }} {{ ORGANIZATION }}
       SPDX-License-Identifier: MIT
