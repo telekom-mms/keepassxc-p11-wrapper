@@ -1,5 +1,5 @@
 /*
-Copyright 2022 T-Systems Multimedia Solutions GmbH
+Copyright 2022-2023 Deutsche Telekom MMS GmbH
 SPDX-License-Identifier: MIT
 */
 
@@ -156,7 +156,7 @@ func performSmartCardLogin(m *p11.Module, slotNum int) (p11.Session, error) {
 
 	session, err := slots[slotNum].OpenSession()
 	if err != nil {
-		return nil, fmt.Errorf("could not open smartcard session")
+		return nil, fmt.Errorf("could not open smartcard session: %w", err)
 	}
 
 	err = session.Login(string(pin))
