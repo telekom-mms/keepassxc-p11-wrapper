@@ -1,5 +1,5 @@
 /*
-Copyright 2022 T-Systems Multimedia Solutions GmbH
+Copyright 2022-2023 Deutsche Telekom MMS GmbH
 SPDX-License-Identifier: MIT
 */
 
