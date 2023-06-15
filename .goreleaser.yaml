@@ -1,0 +1,93 @@
+before:
+  hooks:
+    - go mod tidy
+    - sh -c "gzip --best -n -c keepassxc-p11-wrapper.1 > keepassxc-p11-wrapper.1.gz"
+builds:
+  - env:
+      - CGO_ENABLED=1
+    goos:
+      - linux
+    goarch:
+      - amd64
+    id: keepassxc-p11-wrapper
+    main: ./cmd/keepassxc-p11-wrapper/main.go
+    buildmode: pie
+    ldflags:
+      - -s -w
+archives:
+  - format: tar.gz
+    rlcp: true
+    wrap_in_directory: true
+    files:
+      - src: resources/keepassxc-p11-wrapper.xml
+        dst: keepassxc-p11-wrapper.xml
+        info:
+          mode: 0644
+      - src: resources/com.t-systems-mms.Keepassxc-P11-Wrapper.desktop
+        dst: com.t-systems-mms.Keepassxc-P11-Wrapper.desktop
+        info:
+          mode: 0644
+      - README.md
+      - LICENSE
+checksum:
+  name_template: "checksums.txt"
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+nfpms:
+  - package_name: keepassxc-p11-wrapper
+    file_name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Arch }}"
+    vendor: Deutsche Telekom MMS GmbH
+    maintainer: The MMS Linux Dev Team <mmslinux-dev@t-systems-mms.com>
+    description: |-
+      Wrapper for PKCS#11 token support around keepassxc
+      keepassxc-mycard-wrapper allows opening kdbx databases from Keepass2 that
+      use key files encrypted by the CertKeyProviderPlugin from
+      https://github.com/markbott/CertKeyProvider/tree/master/CertKeyProviderPlugin
+      in KeepassXC.
+      The wrapper detects the presence of .p7mkey files and tries to decrypt
+      these using the PKCS#11 driver. It defaults to using the TCOS NetKey3
+      driver that is used for the Telekom MyCard SmartCard.
+    license: MIT
+    formats:
+      - deb
+    bindir: /usr/bin
+    section: utils
+    # important: this makes the package non native
+    release: "1"
+    priority: optional
+    # chglog init -> generates changelog.yml
+    # chglog add --version v#.#.# -> after every tag, call in hook above?
+    # activate if https://github.com/goreleaser/nfpm/pull/656 is merged and used in goreleaser
+    # -> remove overrides
+    # changelog: "changelog.yml"
+    deb:
+      lintian_overrides:
+        - "no-changelog"
+    dependencies:
+      - "libc6"
+    contents:
+      - src: resources/keepassxc-p11-wrapper.xml
+        dst: /usr/share/mime/packages/
+        file_info:
+          mode: 0644
+      - src: resources/com.t-systems-mms.Keepassxc-P11-Wrapper.desktop
+        dst: /usr/share/applications/
+        file_info:
+          mode: 0644
+      - src: keepassxc-p11-wrapper.1.gz
+        dst: /usr/share/man/man1/
+        file_info:
+          mode: 0644
+      - src: copyright
+        dst: /usr/share/doc/keepassxc-p11-wrapper/
+        file_info:
+          mode: 0644
+release:
+  prerelease: auto
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json

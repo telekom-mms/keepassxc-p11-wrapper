@@ -1,3 +1,5 @@
+*.gz
 *.kdbx
 *.p7mkey
+/dist
 /keepassxc-p11-wrapper
