@@ -1,5 +1,5 @@
 /*
-Copyright 2022-2023 Deutsche Telekom MMS GmbH
+Copyright 2022-2025 Deutsche Telekom MMS GmbH
 SPDX-License-Identifier: MIT
 */
 
@@ -17,6 +17,7 @@ func GetPin() ([]byte, error) {
 	if err != nil {
 		return nil, fmt.Errorf("could not create pinentry client: %w", err)
 	}
+
 	defer client.Close()
 
 	err = client.Option("default-prompt=SmartCard PIN:")

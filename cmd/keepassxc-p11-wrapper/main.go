@@ -1,5 +1,5 @@
 /*
-Copyright 2022-2023 Deutsche Telekom MMS GmbH
+Copyright 2022-2025 Deutsche Telekom MMS GmbH
 SPDX-License-Identifier: MIT
 */
 
@@ -146,12 +146,14 @@ func runKeepassXc(executable string, dataFile string, decryptedKey []byte) error
 		if err != nil {
 			return fmt.Errorf("could not write temporary key: %w", err)
 		}
+
 		defer func(fileName string) {
 			err := os.Remove(fileName)
 			if err != nil {
 				logrus.Errorf("could not remove temporary file: %v", err)
 			}
 		}(temp.Name())
+
 		args = []string{"--keyfile", temp.Name(), dataFile}
 	}
 
@@ -198,6 +200,7 @@ func checkKeepassXcSubprocess(executable string) bool {
 			return true
 		}
 	}
+
 	return false
 }
 
