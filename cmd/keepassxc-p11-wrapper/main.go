@@ -1,5 +1,5 @@
 /*
-Copyright 2022-2023 Deutsche Telekom MMS GmbH
+Copyright 2022-2025 Deutsche Telekom MMS GmbH
 SPDX-License-Identifier: MIT
 */
 
@@ -18,6 +18,7 @@ import (
 	"strings"
 	"time"
 
+	psprocess "github.com/shirou/gopsutil/process"
 	"pault.ag/go/pkcs7"
 
 	"github.com/sirupsen/logrus"
@@ -27,8 +28,9 @@ import (
 )
 
 const (
-	dbExtension  = ".kdbx"
-	keyExtension = ".p7mkey"
+	executableName = "keepassxc"
+	dbExtension    = ".kdbx"
+	keyExtension   = ".p7mkey"
 )
 
 func main() {
@@ -51,9 +53,14 @@ func main() {
 		logrus.Fatal("only kdbx files are supported")
 	}
 
-	executable, err := exec.LookPath("keepassxc")
+	executable, err := exec.LookPath(executableName)
 	if err != nil {
 		logrus.Fatalf("could not find keepassxc in PATH")
+	}
+
+	alreadyRunning := checkKeepassXcSubprocess(executableName)
+	if alreadyRunning {
+		logrus.Fatalf("keepassxc already running, please stop it before starting again")
 	}
 
 	keyData, err := parseKeyFile(dataFile)
@@ -139,12 +146,14 @@ func runKeepassXc(executable string, dataFile string, decryptedKey []byte) error
 		if err != nil {
 			return fmt.Errorf("could not write temporary key: %w", err)
 		}
+
 		defer func(fileName string) {
 			err := os.Remove(fileName)
 			if err != nil {
 				logrus.Errorf("could not remove temporary file: %v", err)
 			}
 		}(temp.Name())
+
 		args = []string{"--keyfile", temp.Name(), dataFile}
 	}
 
@@ -181,6 +190,18 @@ func runKeepassXcSubprocess(executable string, args []string) error {
 	}
 
 	return nil
+}
+
+func checkKeepassXcSubprocess(executable string) bool {
+	processes, _ := psprocess.Processes()
+	for _, process := range processes {
+		name, _ := process.Name()
+		if 0 == strings.Compare(name, executable) {
+			return true
+		}
+	}
+
+	return false
 }
 
 func writeKey(decryptedKey []byte) (*os.File, error) {

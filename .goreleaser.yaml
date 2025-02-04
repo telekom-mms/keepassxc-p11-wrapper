@@ -1,3 +1,4 @@
+version: 2
 before:
   hooks:
     - go mod tidy
@@ -15,8 +16,8 @@ builds:
     ldflags:
       - -s -w
 archives:
-  - format: tar.gz
-    rlcp: true
+  - formats:
+      - tar.gz
     wrap_in_directory: true
     files:
       - src: resources/keepassxc-p11-wrapper.xml
